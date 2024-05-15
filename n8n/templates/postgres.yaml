@@ -20,7 +20,6 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: postgresql-storage
-  namespace: {{.Values.namespace}}
 spec:
   {{- if .Values.persistPostgres }}
   storageClassName: ""
@@ -37,7 +36,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgres
-  namespace: {{.Values.namespace}}
 spec:
   replicas: 1
   selector:
@@ -81,7 +79,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: postgres
-  namespace: {{.Values.namespace}}
 spec:
   clusterIP: None
   ports:
