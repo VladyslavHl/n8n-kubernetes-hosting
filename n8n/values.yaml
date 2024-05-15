@@ -1,4 +1,3 @@
-persistPostgres: true
 n8n:
   imageTag: latest
   deploymentMode: scale # single or scale

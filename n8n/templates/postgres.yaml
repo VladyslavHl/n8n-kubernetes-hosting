@@ -1,5 +1,4 @@
 {{- if eq .Values.n8n.deploymentMode "scale" }}
-{{- if .Values.persistPostgres }}
 kind: PersistentVolume
 apiVersion: v1
 metadata:
@@ -13,7 +12,6 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: "/data/postgres"
-{{- end }}
 
 ---
 kind: PersistentVolumeClaim
@@ -21,10 +19,8 @@ apiVersion: v1
 metadata:
   name: postgresql-storage
 spec:
-  {{- if .Values.persistPostgres }}
   storageClassName: ""
   volumeName: postgres
-  {{- end }}
   accessModes:
     - ReadWriteOnce
   resources:
