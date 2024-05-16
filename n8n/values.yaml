@@ -9,6 +9,7 @@ n8n:
     user: n8n
     password: change-this
   concurrency: 20
-
+ingress:
+  host: "n8n.ml-eng.dev.euw1.statsperform.cloud"
 resources:
   memoryLimit: 1Gi

@@ -5,6 +5,7 @@ metadata:
 data:
   N8N_PORT: "5678"
   N8N_METRICS: "true"
+  N8N_EDITOR_BASE_URL: {{ .Values.ingress.host }}
   N8N_LOG_LEVEL: "verbose"
   WEBHOOK_URL: https://{{ .Values.n8n.domainName }}
   N8N_ENCRYPTION_KEY: {{ .Values.n8n.encryptionKey }}

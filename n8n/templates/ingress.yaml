@@ -4,7 +4,7 @@ metadata:
   name: n8n
 spec:
   rules:
-  - host: "n8n.ml-eng.dev.euw1.statsperform.cloud"
+  - host: {{ .Values.ingress.host }}
     http:
       paths:
       - path: "/"
