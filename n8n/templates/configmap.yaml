@@ -6,6 +6,12 @@ data:
   N8N_PORT: "5678"
   N8N_METRICS: "true"
   N8N_LOG_LEVEL: "verbose"
+  N8N_DIAGNOSTICS_ENABLED: "false"
+  N8N_VERSION_NOTIFICATIONS_ENABLED: "false"
+  N8N_TEMPLATES_ENABLED: "false"
+  EXTERNAL_FRONTEND_HOOKS_URLS: ""
+  N8N_DIAGNOSTICS_CONFIG_FRONTEND: ""
+  N8N_DIAGNOSTICS_CONFIG_BACKEND: ""
   # WEBHOOK_URL: https://{{ .Values.n8n.domainName }}
   N8N_ENCRYPTION_KEY: {{ .Values.n8n.encryptionKey }}
   {{- if eq .Values.n8n.deploymentMode "scale" }}
