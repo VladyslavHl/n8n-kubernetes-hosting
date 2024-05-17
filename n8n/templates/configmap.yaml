@@ -6,22 +6,29 @@ data:
   N8N_PORT: "5678"
   N8N_METRICS: "true"
   N8N_LOG_LEVEL: "verbose"
+  N8N_ENCRYPTION_KEY: {{ .Values.n8n.encryptionKey }}
+
+  # disable sending diagnostic data
   N8N_DIAGNOSTICS_ENABLED: "false"
   N8N_VERSION_NOTIFICATIONS_ENABLED: "false"
   N8N_TEMPLATES_ENABLED: "false"
   EXTERNAL_FRONTEND_HOOKS_URLS: ""
   N8N_DIAGNOSTICS_CONFIG_FRONTEND: ""
   N8N_DIAGNOSTICS_CONFIG_BACKEND: ""
-  # WEBHOOK_URL: https://{{ .Values.n8n.domainName }}
-  N8N_ENCRYPTION_KEY: {{ .Values.n8n.encryptionKey }}
-  {{- if eq .Values.n8n.deploymentMode "scale" }}
+
+  {{- if eq .Values.n8n.executionMode "queue" }}
   EXECUTIONS_MODE: queue
-  N8N_DISABLE_PRODUCTION_MAIN_PROCESS: "true"
   QUEUE_BULL_REDIS_HOST: redis
+  {{- end }}
+
+  {{- if .Values.n8n.webhook.enabled }}
+  N8N_DISABLE_PRODUCTION_MAIN_PROCESS: "true"
+  WEBHOOK_URL: {{ .Values.n8n.webhook.url }}
+  {{- end }}
+
   DB_TYPE: postgresdb
   # TODO: add support for external postgres
   DB_POSTGRESDB_HOST: postgres
   DB_POSTGRESDB_DATABASE: {{ .Values.n8n.db.name }}
   DB_POSTGRESDB_USER: {{ .Values.n8n.db.user }}
   DB_POSTGRESDB_PASSWORD: {{ .Values.n8n.db.password }}
-  {{- end }}
