@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: n8n
 spec:
+  ingressClassName: nginx-private
   rules:
   - host: {{ .Values.ingress.host }}
     http:
