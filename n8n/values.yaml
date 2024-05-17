@@ -1,16 +1,24 @@
 n8n:
   imageTag: latest
-  deploymentMode: scale # single or scale
   encryptionKey: change-this
-  domainName: instance1.domain.com
   storageSize: 2Gi
+
   db:
     name: n8n
     user: n8n
     password: change-this
-  concurrency: 10
-  enableWebhookProcessor: false
-ingress:
-  host: "n8n.ml-eng.dev.euw1.statsperform.cloud"
+
+  executionMode: "queue"
+
+  worker:
+    concurrency: 20
+
+  webhook:
+    enabled: false
+    url: http://instance1.domain.com
+
 resources:
   memoryLimit: 1Gi
+
+ingress:
+  host: "n8n.ml-eng.dev.euw1.statsperform.cloud"

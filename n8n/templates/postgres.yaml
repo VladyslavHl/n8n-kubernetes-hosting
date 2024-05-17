@@ -1,4 +1,3 @@
-{{- if eq .Values.n8n.deploymentMode "scale" }}
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
@@ -64,4 +63,3 @@ spec:
     - port: 5432
   selector:
     service: postgres
-{{- end }}

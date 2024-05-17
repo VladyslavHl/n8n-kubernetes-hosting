@@ -1,4 +1,4 @@
-{{- if eq .Values.n8n.deploymentMode "scale" }}
+{{- if eq .Values.n8n.executionMode "queue" }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
