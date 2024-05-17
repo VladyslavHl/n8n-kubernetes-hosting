@@ -1,4 +1,4 @@
-{{- if eq .Values.n8n.deploymentMode "scale" }}
+{{- if and (eq .Values.n8n.deploymentMode "scale") .Values.n8n.enableWebhookProcessor }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:

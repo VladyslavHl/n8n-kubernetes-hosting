@@ -13,11 +13,13 @@ data:
   N8N_DIAGNOSTICS_CONFIG_BACKEND: ""
   N8N_EDITOR_BASE_URL: {{ .Values.ingress.host }}
   N8N_LOG_LEVEL: "verbose"
-  WEBHOOK_URL: https://{{ .Values.n8n.domainName }}
   N8N_ENCRYPTION_KEY: {{ .Values.n8n.encryptionKey }}
   {{- if eq .Values.n8n.deploymentMode "scale" }}
   EXECUTIONS_MODE: queue
+  {{- if .Values.n8n.enableWebhookProcessor }}
+  WEBHOOK_URL: https://{{ .Values.n8n.domainName }}
   N8N_DISABLE_PRODUCTION_MAIN_PROCESS: "true"
+  {{- end }}
   QUEUE_BULL_REDIS_HOST: redis
   DB_TYPE: postgresdb
   # TODO: add support for external postgres

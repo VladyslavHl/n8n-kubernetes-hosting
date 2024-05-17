@@ -8,7 +8,8 @@ n8n:
     name: n8n
     user: n8n
     password: change-this
-  concurrency: 20
+  concurrency: 10
+  enableWebhookProcessor: false
 ingress:
   host: "n8n.ml-eng.dev.euw1.statsperform.cloud"
 resources:
